@@ -1,0 +1,16 @@
+<?php
+include 'koneksi.php';
+if (isset($_POST['submit'])) {
+    $id = $_POST['id_produk'];
+    $gambar = $_POST['gambar'];
+    $nama = $_POST['nama_produk'];
+    $harga = $_POST['harga'];
+
+    $sql = "UPDATE produk SET gambar='$gambar',nama_produk='$nama', harga='$harga' WHERE id_produk='$id'";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+        header('Location: index.php');
+    } else {
+        header('location: simpanedit.php?status=gagal');
+    }
+}
