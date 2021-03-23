@@ -1,0 +1,17 @@
+<?php
+include 'koneksi.php';
+if (isset($_GET['id'])) {
+    header('Location: index.php');
+}
+$id_produk = $_GET['id_produk']; 
+
+$sql    = "DELETE FROM produk WHERE id_produk='$id_produk'";
+$query  = mysqli_query($conn, $sql);
+
+if ($query) {
+    header('Location: index.php');
+
+}else {
+    header('Location: index.php?status=gagal');
+}
+?>
